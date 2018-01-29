@@ -1,0 +1,31 @@
+.table-normal {
+    border-collapse: collapse;
+    empty-cells: hide;
+    border: 1px solid #eee;
+    width:100%;
+}
+
+.table-normal thead tr, .table-normal tfoot tr {
+    background-color: #555;
+    color: #fff;
+}
+
+.table-normal tbody td, .table-normal thead td, .table-normal thead th {
+    border: 1px solid #eee;
+    padding: 3px;
+}
+
+.table-normal thead td {
+    font-weight: bold;
+}
+
+.table-normal tbody .f1 {
+    background: #fff;
+    color: #444;
+}
+
+.table-normal tbody .f2 {
+    background: #ddd;
+    color: #444;
+}
+

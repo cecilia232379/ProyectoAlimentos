@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title th:text="${sistema}"></title>
+       
+        <!--ESTILOS POR DEFAULT-->
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap-responsive.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/bootstrap/docs.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/font-awesome/css/font-awesome.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/fuentes.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty_rojo.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/dashboard.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty-responsive.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/css/estilos.css}"  type="text/css" media="screen" />
+        <link rel="stylesheet" href="#" th:href="@{/css/botones.css}"  type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.core.css}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.theme.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.tabs.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.deshab.css}" type="text/css" media="screen"/>
+
+        <!--JQUERY POR DEFAULT-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery/jquery.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/bootstrap/bootstrap.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/nicescroll/jquery.nicescroll.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/flaty.js}"></script>
+
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.core.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.widget.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.tabs.js}"></script>
+
+        <!--VALIDACION-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/jquery.validate.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/reglas.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/salir.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/function.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/seguridad/main.js}"></script>
+
+        <!--DatePicker-->
+        	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ 		<style>
+ 			.div-inline{
+    display:inline-block;
+}
+.modal-footer2 {
+    padding: 15px;
+    /* text-align: right; */
+    border-top: 1px solid #e5e5e5;
+    }
+.modal2{
+	position: fixed;
+    top: 0;
+
+    /* bottom: 0; */
+    /* left: 0; */
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 1050;
+    
+    margin-left: -280px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,0.3);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+ 		</style>
+
+<script>
+$(document).ready(function() {
+	
+	
+
+	   $("body").delegate("#datepicker", "focusin", function(){
+	        $(this).datepicker();
+	    });
+	
+	getFeriadosByYear(2017);
+	$("#dropdown_ano").change(function(){
+		getFeriadosByYear($("#dropdown_ano").val());
+	});
+});
+
+
+
+function openFeriadoModal(){
+	$.ajax({
+		url:"/sistalimentos2/feriado/feriadoform?id=0",
+		success:function(data){
+			$("#feriadoModal").html(data);
+			$("#feriadoModal").modal("show");
+		}		
+	});
+	
+}
+function getFeriadosByYear(year){
+	var url = '/sistalimentos2/feriado/listar/'+year;
+	//loading gif
+	//var data = {}
+	$("#grilla_feriado").load(url);
+	
+}
+</script>
+
+    </head>
+    <body>
+     
+         <div th:replace="SegmuestraNavbar :: navbar"></div> 
+        <div class="container-fluid" id="main-container">
+        	<!-- <div th:replace="SegmuestraMenu.html"></div> -->
+            <div id="main-content">
+          
+           
+                <!-- TODO -->
+                <h1>Feriados</h1>
+                <select id="dropdown_ano" >
+
+  <option value="2017">2017</option>
+  <option value="2016">2016</option>
+  <option value="2015">2015</option>
+
+</select>
+<!--  a href="#" th:href="@{/feriado/feriadoform?id=0}"-->
+     <button type="button" class="btn btn-success" th:onclick="'openFeriadoModal()'">Nuevo</button>
+ <!-- /a   -->
+     <div id="grilla_feriado">           
+	<table class="table" width="80%">
+      
+       <!-- Header Table -->
+       <thead>
+            <tr>
+                <th>Fecha</th>
+				<th>Tipo</th>
+                <th>Descripcion</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <!-- Footer Table -->
+       <tbody>
+					<tr th:each="feriado:${feriados}">
+						<td th:text="${#dates.format(feriado.ferfechaferiado, 'dd/MM/yyyy')}"></td>
+						<td th:switch="${feriado.fertipoferidado}">
+  							<p th:case="1048">FERIADO GLOBAL</p>
+  							<p th:case="1049">FERIADO NACIONAL</p>
+ 						
+						</td>
+					
+						<td th:text="${feriado.ferdescripcion}"></td>
+						<td >
+						<a href="#" th:href="@{/feriado/feriadoform?id=__${feriado.idferiado}__}">
+							<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+						</a></td>
+						<td >
+						
+						<a href="#" th:href="@{/feriado/removecontact?id=__${feriado.idferiado}__}">
+							<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+						</a>
+						</td>
+					
+					</tr>
+					
+				</tbody>
+    </table>
+         </div>      
+                
+                
+                <a id="btn-scrollup" class="btn btn-circle btn-large" href="#" ><i class="icon-chevron-up"></i></a>
+            </div>
+        </div>
+        <div th:replace="SegmuestraPie :: footer"></div>
+		<div id="feriadoModal" class="modal2" role="dialog" >
+			
+		</div>
+			
+			
+    </body>
+</html>

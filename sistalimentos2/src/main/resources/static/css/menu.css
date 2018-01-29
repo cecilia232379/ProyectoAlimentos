@@ -1,0 +1,34 @@
+.menu-normal {
+    width: 100%;
+}
+
+.menu-normal ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.menu-normal li a {
+    height: 24px;
+    text-decoration: none;
+}
+
+.menu-normal li a.imp:active, .menu-normal li a.imp:link, .menu-normal li a.imp:visited {
+    color: #444;
+    display: block;
+    background-color:#ccc;
+    padding: 6px;
+}
+
+.menu-normal li a.par:active, .menu-normal li a.par:link, .menu-normal li a.par:visited {
+    color: #444;
+    display: block;
+    background-color:#eee;
+    padding: 6px;
+}
+
+.menu-normal li a.imp:hover, .menu-normal li a.par:hover {
+    color: #fff;
+    background-color:#857;
+    padding: 6px;
+}

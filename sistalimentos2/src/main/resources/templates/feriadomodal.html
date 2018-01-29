@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title th:text="${sistema}"></title>
+       
+        <!--ESTILOS POR DEFAULT-->
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap-responsive.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/bootstrap/docs.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/font-awesome/css/font-awesome.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/fuentes.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty_rojo.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/dashboard.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty-responsive.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/css/estilos.css}"  type="text/css" media="screen" />
+        <link rel="stylesheet" href="#" th:href="@{/css/botones.css}"  type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.core.css}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.theme.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.tabs.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.deshab.css}" type="text/css" media="screen"/>
+
+        <!--JQUERY POR DEFAULT-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery/jquery.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/bootstrap/bootstrap.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/nicescroll/jquery.nicescroll.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/flaty.js}"></script>
+		
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+		
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.core.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.widget.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.tabs.js}"></script>
+
+        <!--VALIDACION-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/jquery.validate.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/reglas.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/salir.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/function.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/seguridad/main.js}"></script>
+
+        <!--DatePicker-->
+       
+       
+ 		<style>
+ 			.div-inline{
+    display:inline-block;
+}
+ 		</style>
+ <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    	
+    	 dateFormat: 'dd/mm/yy'
+    });
+  } );
+  </script>
+
+
+    </head>
+<body>
+
+
+
+
+
+		<div   th:fragment="modalf">
+			<div class="modal-dialog">
+			<h1>Nuevo </h1>
+			<br/>
+			
+			<div class="modal-content">
+			<div class="modal-body">
+			<form action="#" th:action="@{/feriado/addferiado}" th:object="${feriadoModel}" method="post">
+				
+				<input type="hidden" th:field="*{idferiado}" ></input>
+				
+				<div class="form-group">
+				<label class="control-label col-sm-2" for="dropdown_tipo_feriado">Tipo:</label> 
+				<div class="col-sm-3">
+				<select  th:field="*{fertipoferidado}" th:value="*{fertipoferidado}" >
+  					<option value="1048">FERIADO GLOBAL</option>
+  					<option value="1049">FERIADO NACIONAL</option>
+				</select>
+				</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+				<label class="control-label col-sm-2" for="datepicker">Fecha: </label>
+				<div class="col-sm-3">
+				<input type="text" id="datepicker" class="form-control" th:field="*{ferfechaferiado}" th:value="*{ferfechaferiado}"></input>
+				</div>
+				</div>
+				<br/>
+				<div class="form-group">
+				<label class="control-label col-sm-2" for="ferdescripcion">Descripcion: </label>
+				<div class="col-sm-3">
+				<input type="text" class="form-control" th:field="*{ferdescripcion}" th:value="*{ferdescripcion}"></input>
+			    </div>
+			    </div>
+				
+				
+				<br/>
+				<div class="form-group">
+				 <div class="col-sm-offset-1 col-sm-3"> 
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Agregar
+				</button>
+				</div>
+				
+				 </div>
+			</form>
+			</div>
+			<div class="modal-footer2">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+
+
+</body>
+</html>

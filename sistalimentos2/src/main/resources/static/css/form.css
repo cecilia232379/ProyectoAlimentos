@@ -1,0 +1,33 @@
+.form-normal {
+    margin: auto;
+}
+
+.form-normal fieldset {
+    display: inline-block;
+    border:1px solid #ddd;
+    padding: 8px;
+}
+
+.form-normal legend {
+    border:1px solid #ddd;
+    padding: 2px 8px;
+    margin-bottom: 8px; /*IE*/
+}
+
+.form-normal div {
+    margin-top: 2px;
+}
+
+.form-normal label {
+    display: block;
+    float: left;
+    padding-right: 4px;
+}
+
+.form-normal input:focus,  .form-normal textarea:focus{
+    background: #eee;
+}
+
+.form-normal .center {
+    text-align: center;
+}

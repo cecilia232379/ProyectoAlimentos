@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title th:text="${sistema}"></title>
+       
+        <!--ESTILOS POR DEFAULT-->
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap-responsive.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/bootstrap/docs.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/font-awesome/css/font-awesome.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/fuentes.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty_rojo.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/dashboard.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty-responsive.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/css/estilos.css}"  type="text/css" media="screen" />
+        <link rel="stylesheet" href="#" th:href="@{/css/botones.css}"  type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.core.css}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.theme.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.tabs.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.deshab.css}" type="text/css" media="screen"/>
+
+        <!--JQUERY POR DEFAULT-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery/jquery.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/bootstrap/bootstrap.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/nicescroll/jquery.nicescroll.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/flaty.js}"></script>
+
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.core.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.widget.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.tabs.js}"></script>
+
+        <!--VALIDACION-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/jquery.validate.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/reglas.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/salir.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/function.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/seguridad/main.js}"></script>
+
+        <!--DatePicker-->
+       
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ 		<style>
+ 			.div-inline{
+    display:inline-block;
+}
+ 		</style>
+
+<script>
+$(document).ready(function() {
+	getPeriodosByYear(2017);
+	$("#dropdown_ano").change(function(){
+		if($("#dropdown_mes").val()!=""){
+			getPeriodosByYearAnMonth($("#dropdown_ano").val(),$("#dropdown_mes").val());
+		}else{
+			getPeriodosByYear($("#dropdown_ano").val());
+		}
+		
+	});
+    $("#dropdown_mes").change(function(){
+    	if($("#dropdown_ano").val()!=""){
+    		getPeriodosByYearAnMonth($("#dropdown_ano").val(),$("#dropdown_mes").val());
+    	}else{
+    		alert("Escoja un año");
+    	}
+    	
+    });
+});
+	function getPeriodosByYearAnMonth(year,month){
+		var url = '/sistalimentos2/periodo/listar/'+year+"/"+month;
+		//loading gif
+		//var data = {}
+		$("#grilla_periodo").load(url);
+		
+	}
+
+function getPeriodosByYear(year){
+	var url = '/sistalimentos2/periodo/listar/'+year;
+	//loading gif
+	//var data = {}
+	$("#grilla_periodo").load(url);
+	
+}
+</script>
+
+    </head>
+    <body>
+     
+         <div th:replace="SegmuestraNavbar :: navbar"></div> 
+        <div class="container-fluid" id="main-container">
+        	<!-- <div th:replace="SegmuestraMenu.html"></div> -->
+            <div id="main-content">
+          
+           
+                <!-- TODO -->
+                <h1>Semanas</h1>
+                <select id="dropdown_ano" >
+
+  <option value="2017">2017</option>
+  <option value="2016">2016</option>
+  <option value="2015">2015</option>
+
+</select>
+
+<select id="dropdown_mes" >
+  <option value="">Seleccione</option>
+  <option value="1">ENERO</option>
+  <option value="2">FEBRERO</option>	
+  <option value="3">MARZO</option>
+  <option value="4">ABRIL</option>
+  <option value="5">MAYO</option>
+  <option value="6">JUNIO</option>
+  <option value="7">JULIO</option>
+  <option value="8">AGOSTO</option>
+  <option value="9">SEPTIEMBRE</option>	
+  <option value="10">OCTUBRE</option>	
+  <option value="11">NOVIEMBRE</option>		
+  <option value="12">DICIEMBRE</option>		
+</select>
+
+
+
+<a href="#" th:href="@{/periodo/periodoform?id=0}">
+     <button type="button" class="btn btn-success">Nuevo</button>
+ </a>    
+     <div id="grilla_periodo">           
+
+         </div>      
+                
+                
+                <a id="btn-scrollup" class="btn btn-circle btn-large" href="#" ><i class="icon-chevron-up"></i></a>
+            </div>
+        </div>
+        <div th:replace="SegmuestraPie :: footer"></div>
+	
+			
+			
+    </body>
+</html>

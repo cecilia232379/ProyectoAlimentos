@@ -1,0 +1,127 @@
+/* 
+    Document   : estilo
+    Created on : 05/06/2014, 12:39:34 PM
+    Author     : acoronel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+/* contenedor */
+.contenedor {
+    margin: 0 auto;
+    text-align: left;
+    width: 960px;
+}
+
+/* encabezado */
+#encabezado{
+    background: none repeat scroll 0 0 #333333;
+    color: #FFF;
+    padding: 5px 0;
+    width: 940px;
+}
+
+#encabezado p#nombre-usuario {
+    color: #FFFFFF;
+    font: bold 11px Arial,Tahoma,Sans-serif;
+    text-transform: none;
+    top: 25px;
+}
+a.log:link {
+    color: #FFE95D;
+    text-decoration: none;
+}
+a:link {
+    color: #0066CC;
+    text-decoration: none;
+}
+#menu
+{
+    padding: 0;
+    width: 940px;
+}
+
+/* cuerpo */
+#cuerpo{
+    background: none repeat scroll 0 0 #fff;
+    color: #333;
+    padding: 0;
+    width: 940px;
+    min-height: 300px;
+}
+#principal {
+    float: left;
+    height: 300px;
+    width: 70%;
+}
+.mejorado {
+    background: none repeat scroll 0 0 #EBF4FB;
+    border: 1px solid #B7DDF2;
+    margin: 1%;
+    width: 97.5%;
+}
+#fotoprincipal {
+    background-image: url("/recursos/images/fotoprincipal.jpg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 80%;
+    width: 100%;
+}
+.Estilo2 {
+    font-size: 45px;
+}
+#fecha {
+    background-image: url("/recursos/images/naranja.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    height: 160px;
+    width: 150px;
+}
+#fila1 {
+    background-color: #EC5605;
+}
+.limpiar {
+    clear: both;
+}
+.titulopag {
+    color: #FFFFFF;
+    float: left;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+}
+.salir {
+    float: right;
+    margin: 5px;
+}
+/* pie */
+
+#dpie {
+    padding: 0;
+    width: 940px;
+}
+
+#tpie {
+    background: none repeat scroll 0 0 #444444;
+    color: #FFF;
+    font-size: 11px;
+    text-align: center;
+}
+
+#credito {
+    background: none repeat scroll 0 0 #333333;
+    color: #AAA;
+    font-size: 10px;
+    padding: 5px;
+}
+a.naranja {
+    color: #FCB43E;
+    font-size: 13px;
+    text-decoration: none;
+}

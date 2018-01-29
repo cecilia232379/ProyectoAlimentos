@@ -1,0 +1,49 @@
+#Spring properties
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@172.18.0.9:1521:ORCL
+    username: USRSEGURIDAD
+    password: APPPWD
+    driver-class-name: oracle.jdbc.OracleDriver
+    #muestra enm el log los queries y cuando se arranca se actualiza con las entities
+  thymeleaf:
+    cache: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect        
+  aop:
+    auto: true
+    proxy-target-class: false
+  messages:
+    always-use-message-format: false
+    basename: messages
+    cache-seconds: -1
+  mvc:
+    dispatch-trace-request: false
+    dispatch-options-request: true
+  couchbase:
+    bucket:
+      name:   default 
+#Security properties    
+security:
+  oauth2:
+    resource:
+      prefer-token-info: true
+      service-id: resource
+server:
+  port: 8077
+  contextPath: /sistalimentos2
+
+
+
+
+  
+
+
+             

@@ -1,0 +1,18 @@
+#editar16 { background:url('../images/icons/edit16.png') no-repeat; border:none; width:16px; height:16px; }
+#eliminar16 { background:url('../images/icons/delete16.png') no-repeat; border:none; width:16px; height:16px; }
+#avance16 { background:url('../images/icons/avance16.png') no-repeat; border:none; width:16px; height:16px; }
+#detalle16 { background:url('../images/icons/detalle16.png') no-repeat; border:none; width:16px; height:16px; }
+#entregable16 { background:url('../images/icons/entregable16.png') no-repeat; border:none; width:16px; height:16px; }
+#monto16 { background:url('../images/icons/monto16.png') no-repeat; border:none; width:16px; height:16px; }
+#view16 { background:url('../images/icons/view16.png') no-repeat; border:none; width:16px; height:16px; }
+#add16 { background:url('../images/icons/add_16.png') no-repeat; border:none; width:16px; height:16px; }
+#salir16 { background:url('../images/icons/exit16.png') no-repeat; border:none; width:16px; height:16px; }
+#objeto16 { background:url('../images/icons/object16.png') no-repeat; border:none; width:16px; height:16px; }
+#retornar16 { background:url('../images/icons/retornar16.png') no-repeat; border:none; width:16px; height:16px; }
+#search16 { background:url('../images/icons/search16.png') no-repeat; border:none; width:16px; height:16px; }
+#grabar16 { background:url('../images/icons/save_16.png') no-repeat; border:none; width:16px; height:16px; }
+#subir16{ background:url('../images/icons/up.png') no-repeat; border:none; width:16px; height:16px; }
+#bajar16{ background:url('../images/icons/down16.png') no-repeat; border:none; width:16px; height:16px; }
+#clave16{ background:url('../images/icons/key.png') no-repeat; border:none; width:16px; height:16px; }
+#BotonBuscar{ height:30px; margin-top: 0px;}
+.btn-flexigrid{padding: 3px 7px !important}

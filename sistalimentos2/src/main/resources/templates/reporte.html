@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title th:text="${sistema}"></title>
+       
+        <!--ESTILOS POR DEFAULT-->
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap-responsive.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/bootstrap/docs.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/font-awesome/css/font-awesome.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/fuentes.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty_rojo.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/dashboard.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty-responsive.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/css/estilos.css}"  type="text/css" media="screen" />
+        <link rel="stylesheet" href="#" th:href="@{/css/botones.css}"  type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.core.css}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.theme.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.tabs.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.deshab.css}" type="text/css" media="screen"/>
+
+        <!--JQUERY POR DEFAULT-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery/jquery.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/bootstrap/bootstrap.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/nicescroll/jquery.nicescroll.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/flaty.js}"></script>
+
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.core.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.widget.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.tabs.js}"></script>
+
+        <!--VALIDACION-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/jquery.validate.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/reglas.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/salir.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/function.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/seguridad/main.js}"></script>
+
+        <!--DatePicker-->
+        	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ 		<style>
+ 			.div-inline{
+    display:inline-block;
+}
+
+ 		</style>
+
+<script>
+$(document).ready(function() {
+	
+	
+
+	  
+	
+	
+	$("#buscar").click(function(){
+		getReporte();
+	});
+});
+function getReporte(){
+	var ano = $("#dropdown_ano").val();
+	var mes = $("#dropdown_mes").val();
+	var unidad_organica = $("#unidad_organica").val(); 
+	var tipo = $("#tipo").val(); 
+	
+	var url = '/sistalimentos2/reporte/getlista/'+ano+'/'+mes+'/'+unidad_organica+'/'+tipo;
+	//loading gif
+	//var data = {}
+	$("#grilla_reporte").load(url);
+	
+}
+function reporte(fecinicio,idperiodo,ano){
+	if($("#unidad_organica").val()=="31"){
+		var url ='/sistalimentos2/reporte/excel2/'+$("#dropdown_mes").val()+'/'+ano+'/'+idperiodo;
+	}else{
+		var url ='/sistalimentos2/reporte/excel3/'+$("#dropdown_mes").val()+'/'+ano+'/'+idperiodo;
+	}
+	
+	window.open(url, '_blank');
+    return false;
+	
+	
+}
+
+
+
+</script>
+
+    </head>
+    <body>
+     
+         <div th:replace="SegmuestraNavbar :: navbar"></div> 
+        <div class="container-fluid" id="main-container">
+        	<!-- <div th:replace="SegmuestraMenu.html"></div> -->
+            <div id="main-content">
+          
+           
+                <!-- TODO -->
+                <h1>Reporte de Información Mensual</h1>
+                <select id="dropdown_ano" >
+	 <option value="">Año</option>
+  <option value="2017">2017</option>
+  <option value="2016">2016</option>
+  <option value="2015">2015</option>
+
+</select>
+
+<select id="dropdown_mes" >
+  <option value="">Mes</option>
+  <option value="1">ENERO</option>
+  <option value="2">FEBRERO</option>	
+  <option value="3">MARZO</option>
+  <option value="4">ABRIL</option>
+  <option value="5">MAYO</option>
+  <option value="6">JUNIO</option>
+  <option value="7">JULIO</option>
+  <option value="8">AGOSTO</option>
+  <option value="9">SEPTIEMBRE</option>	
+  <option value="10">OCTUBRE</option>	
+  <option value="11">NOVIEMBRE</option>		
+  <option value="12">DICIEMBRE</option>		
+</select>
+
+<select id="unidad_organica" >
+<option value="">Unidad Orgánica</option>
+  <option value="31">UDIF</option>
+  <option value="43">USPNNA</option>
+  <option value="44">USPPAM</option>
+	 <option value="45">USPPD</option>
+</select>
+
+<select id="tipo" >
+	<option value="">Tipo</option>
+  <option value="1">LIMA</option>
+  <option value="2">PROVINCIAS</option>
+
+</select>
+<button type="button" id="buscar" class="btn btn-success">Buscar</button>
+
+ <div id="grilla_reporte">           
+
+         </div>
+
+
+</div></div>
+
+
+
+			
+			
+    </body>
+</html>

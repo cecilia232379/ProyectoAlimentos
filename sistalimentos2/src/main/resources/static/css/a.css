@@ -1,0 +1,13 @@
+.a-normal:active, .a-normal:link, .a-normal:visited {
+    color: #444;
+    text-decoration: underline;
+}
+
+.a-normal:hover 	{
+    color: #fff;
+    background-color: #aaa;
+    text-decoration: none;
+}
+
+
+
