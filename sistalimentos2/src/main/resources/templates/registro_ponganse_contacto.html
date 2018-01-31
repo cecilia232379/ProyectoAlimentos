@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title th:text="${sistema}"></title>
+       
+        <!--ESTILOS POR DEFAULT-->
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="#"  th:href="@{/framework/bootstrap/bootstrap-responsive.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/bootstrap/docs.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/font-awesome/css/font-awesome.min.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/fuentes.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty_rojo.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/dashboard.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/framework/flaty-responsive.css}"/>
+        <link rel="stylesheet" href="#" th:href="@{/css/estilos.css}"  type="text/css" media="screen" />
+        <link rel="stylesheet" href="#" th:href="@{/css/botones.css}"  type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.core.css}"  type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.theme.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.tabs.css}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="#" th:href="@{/js/jquery-ui/jquery.ui.deshab.css}" type="text/css" media="screen"/>
+
+        <!--JQUERY POR DEFAULT-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery/jquery.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/bootstrap/bootstrap.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/nicescroll/jquery.nicescroll.min.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/framework/flaty.js}"></script>
+
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.core.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.widget.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/jquery-ui/jquery.ui.tabs.js}"></script>
+
+        <!--VALIDACION-->
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/jquery.validate.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/validacion/reglas.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/salir.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/function.js}"></script>
+        <script language="JavaScript" type="text/javascript" th:src="@{/js/seguridad/main.js}"></script>
+
+        <!--DatePicker-->
+        	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ 		<style>
+ 			.div-inline{
+    display:inline-block;
+}
+
+ 		</style>
+
+<script>
+$(document).ready(function() {
+	
+	
+
+	  
+	
+	
+	$("#buscar").click(function(){
+		getReporte();
+	});
+});
+function grabarAlimentos(){
+	var ioarray = [
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:1,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:1,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:1,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:1,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:1,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:1,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:1,nrosemana:1,periodosemana:1,centroatencion:2},
+		
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:2,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:2,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:2,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:2,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:2,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:2,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:2,nrosemana:1,periodosemana:1,centroatencion:2},
+		
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:3,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:3,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:3,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:3,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:3,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:3,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:3,nrosemana:1,periodosemana:1,centroatencion:2},
+		
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:4,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:4,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:4,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:4,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:4,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:4,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:4,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:5,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:5,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:5,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:5,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:5,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:5,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:5,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:6,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:6,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:6,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:6,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:6,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:6,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:6,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:7,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:7,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:7,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:7,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:7,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:7,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:7,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:8,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:8,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:8,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:8,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:8,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:8,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:8,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:9,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:9,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:9,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:9,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:9,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:9,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:9,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:10,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:10,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:10,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:10,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:10,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:10,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:10,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:11,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:11,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:11,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:11,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:11,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:11,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:11,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:1,linea:12,nrosemana:1,periodosemana:1,centroatencion:2}, 
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:2,linea:12,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:3,linea:12,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:4,linea:12,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:5,linea:12,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:6,linea:12,nrosemana:1,periodosemana:1,centroatencion:2},
+		{ desayunoh:4, desayunom:61,almuerzoh:4, almuerzom:61,comidah:4, comidam:61, dia:7,linea:12,nrosemana:1,periodosemana:1,centroatencion:2},
+	
+		
+		{ user:3,  skill:61, level:20}];
+	
+	  $.ajax({
+	        url : 'saveAlimentos',
+	        type : 'POST',
+	        data: JSON.stringify(ioarray),
+	        dataType: "json",
+	        contentType: "application/json"
+	    });
+}
+function SumaValor(indicadorA,indicadorB,indicadorC)
+{
+
+    var i = 1;
+    var sum2 = 0;
+    while (12>=i)
+    {
+        //var variable = "c1" + i;
+        if (document.getElementById(indicadorA+indicadorB+i).value == "")
+        {
+           document.getElementById(indicadorA+indicadorB+i).value = 0;
+        }
+        
+        var x = parseInt(document.getElementById(indicadorA+indicadorB+i).value);
+
+        sum2 = sum2 + x;
+        i=i+1;
+    }
+    //alert(sum2);
+    document.getElementById("tot"+indicadorC).value = sum2;
+  
+}
+function acceptNum(e)
+{
+var tecla;
+tecla = (document.all) ? e.keyCode : e.which;
+if(tecla == 8)
+{return true;}
+var patron;
+//patron = /[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUV WXYZ0123456789]/
+patron = /\d/; //solo acepta numeros
+var te;
+te = String.fromCharCode(tecla);
+return patron.test(te);
+}
+
+function getReporte(){
+	var ano = $("#dropdown_ano").val();
+	var mes = $("#dropdown_mes").val();
+	var unidad_organica = $("#unidad_organica").val(); 
+	var tipo = $("#tipo").val(); 
+	
+	var url = '/sistalimentos2/reporte/getlista/'+ano+'/'+mes+'/'+unidad_organica+'/'+tipo;
+	//loading gif
+	//var data = {}
+	$("#grilla_reporte").load(url);
+	
+}
+function reporte(fecinicio,idperiodo,ano){
+	if($("#unidad_organica").val()=="31"){
+		var url ='/sistalimentos2/reporte/excel2/'+$("#dropdown_mes").val()+'/'+ano+'/'+idperiodo;
+	}else{
+		var url ='/sistalimentos2/reporte/excel3/'+$("#dropdown_mes").val()+'/'+ano+'/'+idperiodo;
+	}
+	
+	window.open(url, '_blank');
+    return false;
+	
+	
+}
+
+
+
+</script>
+
+    </head>
+    <body>
+     
+         <div th:replace="SegmuestraNavbar :: navbar"></div> 
+        <div class="container-fluid" id="main-container">
+        	<!-- <div th:replace="SegmuestraMenu.html"></div> -->
+            <div id="main-content">
+        <center>Consulte con el Administrador, ya que la semana a registrar no se encuentra habilitada.</center>
+      
+</div>
+
+
+</div>
+
+
+
+			
+			
+    </body>
+</html>

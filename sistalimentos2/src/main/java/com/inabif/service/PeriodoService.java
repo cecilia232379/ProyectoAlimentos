@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import com.inabif.entity.Periodo;
 import com.inabif.model.PeriodoModel;
 
+
 public interface PeriodoService {
 	
 	public abstract PeriodoModel addPeriodo(PeriodoModel periodoModel);
@@ -23,5 +24,7 @@ public interface PeriodoService {
 	public abstract void removePeriodo(int id);
 	
 	public abstract Page<Periodo> findPeriodosByYear(int year,Pageable pageable);
+	
+	public abstract Periodo findOneByPersemanaAndPeryeart(int persemana, int peryeart);
 
 }

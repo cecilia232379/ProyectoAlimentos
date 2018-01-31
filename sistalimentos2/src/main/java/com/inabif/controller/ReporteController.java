@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -193,10 +194,32 @@ public class ReporteController {
     public @ResponseBody void productExcel(@PathVariable("mes") int mes, @PathVariable("ano") int ano, @PathVariable("periodo") int idperiodo, HttpServletResponse response) {
 	
 		try {
-			final String  url="/reports/Blank_A4_Landscape.jrxml";	
+			final String  url="/reports/Blank_A4_Landscape2.jrxml";	
 			InputStream jasperStream =  this.getClass().getResourceAsStream(url);
 			JasperDesign design = JRXmlLoader.load(jasperStream);
-			JasperReport report = JasperCompileManager.compileReport(design);
+			
+			//
+			final String  url2="/reports/Blank_A4_Landscape3.jrxml";	
+			 jasperStream =  this.getClass().getResourceAsStream(url2);
+			 JasperDesign design2 = JRXmlLoader.load(jasperStream);
+			 
+			 final String  url3="/reports/Blank_A4_Landscape4.jrxml";	
+			 jasperStream =  this.getClass().getResourceAsStream(url2);
+			 JasperDesign design3 = JRXmlLoader.load(jasperStream);
+			 
+			 List<JasperPrint> jasperPrintArray = new ArrayList<JasperPrint>();
+
+			JasperReport jasperReportReport1 = JasperCompileManager.compileReport(design);
+
+			JasperReport jasperReportReport2 = JasperCompileManager.compileReport(design2);
+			
+			JasperReport jasperReportReport3 = JasperCompileManager.compileReport(design3);
+
+			//
+//			final String  url="/reports/Blank_A4_Landscape4.jrxml";	
+//			InputStream jasperStream =  this.getClass().getResourceAsStream(url);
+//			JasperDesign design = JRXmlLoader.load(jasperStream);
+//			JasperReport report = JasperCompileManager.compileReport(design);
 			
 			java.sql.Connection con = localDataSource.getConnection();
 			
@@ -225,22 +248,36 @@ public class ReporteController {
 			System.out.println(division);	
 			parameterMap.put("division", division);
 			
-			
+//			//---
+//			URL mainReport = this.getClass().getResource("/reports/Blank_A4_Landscape4.jasper");
+//			String mainReportPath = mainReport.getPath();
+//			String subreportDir = mainReportPath.substring(0, mainReportPath.lastIndexOf("/")+1);
+//			System.out.println("directorio"+subreportDir);	
+//			//--
+//			parameterMap.put("SUBREPORT_DIR", subreportDir);
+			//-
 			parameterMap.put("title", "Consolidado de alimentos");
 			parameterMap.put("subtitle", "Unidad de Desarrollo Integral de Familias");
 			parameterMap.put("subbtitle", subtittle);
+			//parameterMap.put("con", con);
 			
 			
-			//JasperPrint jasperPrint = JasperFillManager.fillReport(report,parameterMap,jRdataSource);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report,parameterMap,con);
+			//JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReportReport1,parameterMap,con);
+			
+			jasperPrintArray.add(JasperFillManager.fillReport(jasperReportReport1, parameterMap,con));
+			jasperPrintArray.add(JasperFillManager.fillReport(jasperReportReport2, parameterMap,con));
+			jasperPrintArray.add(JasperFillManager.fillReport(jasperReportReport3, parameterMap,con));
+			
 			response.setContentType("application/ms-excel");
-			response.setHeader("Content-Disposition","inline; filename=Blank_A4_Landscape.xls");
-			
+			response.setHeader("Content-Disposition","inline; filename=reporte_cedif_lima.xls");
 			final OutputStream outputStream = response.getOutputStream();
 			
 			JRXlsExporter exporterXLS = new JRXlsExporter();
-			exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT,jasperPrint);
+			
+
+			exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT_LIST,jasperPrintArray);
 			exporterXLS.setParameter(JRXlsExporterParameter.OUTPUT_STREAM,outputStream);
+
 			exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET,Boolean.TRUE);
 			exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND,Boolean.FALSE);
 			exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS,Boolean.TRUE);

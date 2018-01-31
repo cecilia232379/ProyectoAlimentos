@@ -89,6 +89,12 @@ public class PeriodoServiceImpl implements PeriodoService{
 		System.out.println("ano"+ano);
 		return periodosModel;
 	}
+
+	@Override
+	public Periodo findOneByPersemanaAndPeryeart(int persemana, int peryeart) {
+		return periodoRepository.findOneByPersemanaAndPeryeart(persemana,peryeart);
+		//return pe;
+	}
 	
 	
 

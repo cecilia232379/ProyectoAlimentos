@@ -12,16 +12,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.inabif.component.AlimentoConverter;
 import com.inabif.component.FeriadoConverter;
+import com.inabif.entity.Alimento;
 import com.inabif.entity.Feriado;
+import com.inabif.model.AlimentoModel;
 import com.inabif.model.FeriadoModel;
 import com.inabif.repository.AlimentoRepository;
 import com.inabif.repository.FeriadoRepository;
 import com.inabif.service.AlimentoService;
 
 
-@Service("AlimentoServiceImpl")
+@Service("alimentoServiceImpl")
 public class AlimentoServiceImpl implements AlimentoService{
+	
+	@Autowired
+	@Qualifier("alimentoRepository")
+	private AlimentoRepository alimentoRepository;
+	
+	@Autowired
+	@Qualifier("alimentoConverter")
+	private AlimentoConverter alimentoConverter;
+
+	@Override
+	public AlimentoModel addAlimento(AlimentoModel alimentoModel) {
+		Alimento alimento=alimentoRepository.save(alimentoConverter.convertAlimentoModel2Alimento(alimentoModel));
+		
+		return alimentoConverter.convertAlimento2AlimentoModel(alimento);
+	}
 
 //	@Autowired
 //	@Qualifier("alimentoRepository")

@@ -30,6 +30,6 @@ public interface PeriodoRepository extends JpaRepository<Periodo,Serializable>{
 	
 	public abstract Periodo findByIdperiodo(int id);
 	
-	
+	public abstract Periodo findOneByPersemanaAndPeryeart(int persemana, int peryeart);
 	
 }

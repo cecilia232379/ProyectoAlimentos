@@ -1,0 +1,80 @@
+<div id="sidebar" class="nav-collapse"  th:fragment="menu(active)">
+<p th:text="${active}"></p>
+    <ul class="nav nav-list">
+        <!--Inicio menu -->      
+        
+        <li th:if="${active == 'escritorio'}" class="active">
+            <a href="">
+                <i class="icon-dashboard"></i>
+                <span>Escritorio</span>
+            </a>
+        </li>
+        <li th:if="${active != 'escritorio'}" >
+            <a href="">
+                <i class="icon-dashboard"></i>
+                <span>Escritorio</span>
+            </a>
+        </li>
+
+                
+                    <li th:if="${active == 'registro'}" class="active">
+                        
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-desktop"></i>
+                            <span>Registro </span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                            <ul class="submenu">
+                        
+                            <li class="">
+                                
+                                <a href="">
+                                    |-&nbsp;Alimentos
+                                </a>
+                                
+                            </li>
+							
+							
+                            </ul>
+           
+                     </li>
+                	
+                	<li th:if="${active != 'registro'}">
+                        
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-desktop"></i>
+                            <span>Registro </span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                            <ul class="submenu">
+                        
+                            <li class="">
+                                
+                                <a href="">
+                                    |-&nbsp;Alimentos
+                                </a>
+                                
+                            </li>
+							
+							
+                            </ul>
+           
+                     </li>
+
+        
+        <!--Fin Menu-->
+        <li>
+            <a href="">
+                <i class="icon-list-alt"></i>
+                <span>Salir</span>
+            </a>
+        </li>
+    </ul>
+   
+    <div id="sidebar-collapse" class="visible-desktop">
+        <i class="icon-double-angle-left"></i>
+    </div>
+</div>
+

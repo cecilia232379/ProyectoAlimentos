@@ -66,44 +66,40 @@
 
 
 
-		<div   th:fragment="modalf">
+		<div  th:fragment="modalContents">
 			<div class="modal-dialog">
-			
 	
+			<br/>
 			
 			<div class="modal-content">
+			<div class="modal-header"><h4>Nueva Semana</h4></div>
 			<div class="modal-body">
-			<form action="#" th:action="@{/feriado/addferiado}" th:object="${feriadoModel}" method="post">
+			<form action="#" th:action="@{/periodo/addperiodo}" th:object="${periodoModel}" method="post">
+			
+				<input type="hidden" th:field="*{idperiodo}" ></input>
+				<input type="hidden" th:field="*{pereliminado}"  th:value="*{pereliminado}" ></input>
+				<input type="hidden" th:field="*{peryeart}" th:value="*{peryeart}" ></input>
+				<input type="hidden" th:field="*{persemana}" th:value="*{persemana}" ></input>
 				
-				<input type="hidden" th:field="*{idferiado}" ></input>
+				<div class="form-group">
+				<label class="control-label col-sm-2" for="datepicker">Fecha de inicio: </label>
+				<div class="col-sm-3">
+				<input type="text"  class="form-control datepicker" th:field="*{perfecinicio}" th:value="*{perfecinicio}"></input>
+				</div>
 				
-				<div class="form-group">
-				<label class="control-label col-sm-2" for="dropdown_tipo_feriado">Tipo:</label> 
+				
+		
+				<label class="control-label col-sm-2" for="datepicker">Fecha de fin: </label>
 				<div class="col-sm-3">
-				<select  th:field="*{fertipoferidado}" th:value="*{fertipoferidado}" >
-  					<option value="1048">FERIADO GLOBAL</option>
-  					<option value="1049">FERIADO NACIONAL</option>
-				</select>
+				<input type="text"  class="form-control datepicker" th:field="*{perfecfin}" th:value="*{perfecfin}"></input>
 				</div>
-				</div>
-				<br/><br/>
-				<div class="form-group">
-				<label class="control-label col-sm-2" for="datepicker">Fecha: </label>
-				<div class="col-sm-3">
-				<input type="text" id="datepicker" class="form-control" th:field="*{ferfechaferiado}" th:value="*{ferfechaferiado}"></input>
-				</div>
-				</div>
-				<br/>
-				<div class="form-group">
-				<label class="control-label col-sm-2" for="ferdescripcion">Descripcion: </label>
-				<div class="col-sm-3">
-				<input type="text" class="form-control" th:field="*{ferdescripcion}" th:value="*{ferdescripcion}"></input>
-			    </div>
-			    </div>
+		
 				
 				
 				<br/>
-				<div class="modal-footer">
+			</div>
+			
+			 <div class="modal-footer">
                             <button type="submit" 
                                 id="btnConfirm"
                                 class="btn btn-primary">Agregar</button>
@@ -111,14 +107,15 @@
                                 id="btnCancel" 
                                 class="btn btn-default" data-dismiss="modal">Cancelar</button>        
                         </div>
-			</form>
-			</div>
+                         </form>
+                          </div>
+                   
 			
 			</div>
 		</div>
+			</div>
 		
-		
-	</div>
+	
 	
 
 

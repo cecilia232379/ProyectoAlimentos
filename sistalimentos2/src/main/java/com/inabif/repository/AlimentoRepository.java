@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.inabif.entity.Alimento;
 
 
-@Repository("AlimentoRepository")
+@Repository("alimentoRepository")
 public interface AlimentoRepository extends JpaRepository<Alimento,Serializable>{
 
 	

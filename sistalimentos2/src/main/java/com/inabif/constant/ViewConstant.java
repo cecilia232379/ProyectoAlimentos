@@ -5,6 +5,9 @@ public class ViewConstant {
 	public static final String FERIADO_FORM="feriadoform";
 	public static final String FERIADOS="feriados";
 	
+	public static final String REGISTRO="registro";
+	public static final String PONGANSE_CONTACTO_REGISTRO="registro_ponganse_contacto";
+	
 	public static final String PERIODO_FORM="periodoform";
 	public static final String PERIODOS="periodos";
 	public static final String SISTEMA_TITULO = ":::: Sistema de Alimentos - Programa Integral Nacional para el Bienestar Familiar - INABIF ::::";

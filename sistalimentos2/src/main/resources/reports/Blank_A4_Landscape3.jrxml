@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" pageWidth="3800" pageHeight="595" orientation="Landscape" columnWidth="3760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6d718820-1dcd-43bb-a0f6-7e2161a4019a">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="subtitle" class="java.lang.String"/>
+	<parameter name="subbtitle" class="java.lang.String"/>
+	<parameter name="mes" class="java.lang.String"/>
+	<parameter name="ano" class="java.lang.String"/>
+	<parameter name="division" class="java.lang.String"/>
+	<parameter name="periodo" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select Alilinea,
+		(CASE Alilinea 
+  WHEN 1 THEN 'A- Niños de 0 meses a 11 meses'
+   WHEN 2 THEN 'B- Niños de 1 a 2 años 11 meses'
+   WHEN 3 THEN 'C- Niños de 3 a 5 años y 11 meses'
+   WHEN 12 THEN 'L- Practicantes'
+   WHEN 4 THEN 'D- Niños de 6 a 11 años'
+   WHEN 5 THEN 'E- Adolescentes (12 a 17 años)'
+   WHEN 6 THEN 'F- Comedor transitorio (18 a 29 años)'
+   WHEN 7 THEN 'G- Comedor transitorio (30 a 59 años)'
+   WHEN 8 THEN 'H- Adultos de 60 a más años'
+   WHEN 9 THEN 'I- Nombrado'
+   WHEN 10 THEN 'J- Contratado'
+   WHEN 11 THEN 'K- Cooperantes / Promotor comunal familiar'
+   ELSE '0' END) as linea, 
+SUM((case when AteNombre='AÑO NUEVO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_ANO_NUEVO,
+SUM((case when AteNombre='CCF VILLA ESPERANZA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_VILLA_ESPERANZA,
+SUM((case when AteNombre='COLLIQUE' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_COLLIQUE,
+SUM((case when AteNombre='CCF LOS ANGELES' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_LOS_ANGELES,
+SUM((case when AteNombre='DALIAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_DALIAS,
+SUM((case when AteNombre='CCF NIÑO JESÚS DE PRAGA - DALIAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_NINO_JESUS_PRAGA_DAL,
+SUM((case when AteNombre='CCF LAS DELICIAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_LAS_DELICIAS ,
+SUM((case when AteNombre='ROSA DE LIMA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_ROSA_DE_LIMA,
+SUM((case when AteNombre='CCF FAISANES' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_FAISANES,
+SUM((case when AteNombre='CCF VILLA MARÍA DEL TRIUNFO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_VILLA_MARIA_DEL_TRIUNFO ,
+SUM((case when AteNombre='CCF NUEVO PROGRESO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_NUEVO_PROGRESO ,
+SUM((case when AteNombre='CCF JOSÉ GÁLVEZ' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_JOSE_GALVEZ ,
+SUM((case when AteNombre='PAMPLONA ALTA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_PAMPLONA_ALTA,
+SUM((case when AteNombre='CCF MARÍA DE LOS ANGELES' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_MARIA_DE_LOS_ANGELES,
+SUM((case when AteNombre='CCF CORAZÓN DE MARÍA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_CORAZON_DE_MARIA, 
+SUM((case when AteNombre='CCF LAS AMÉRICAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_LAS_AMERICAS,
+SUM((case when AteNombre='CCF ALBORADA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_ALBORADA ,
+SUM((case when AteNombre='CCF LAS AMÉRICAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_LAS_AMERICAS ,
+SUM((case when AteNombre='CCF NIÑO JESÚS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_NINO_JESUS ,
+SUM((case when AteNombre='CCF MINAS 2000' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_MINAS_2000 ,
+SUM((case when AteNombre='CCF SEÑOR DE LOS MILAGROS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_SEÑOR_DE_LOS_MILAGROS,
+SUM((case when AteNombre='PESTALOZZI' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_PESTALOZZI,
+SUM((case when AteNombre='CCF EL PLANETA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_EL_PLANETA,
+SUM((case when AteNombre='CCF AEROPUERTO PESTALOZZI' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_AEROPUERTO_PESTALOZZI,
+SUM((case when AteNombre='CCF BOCANEGRA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_BOCANEGRA,
+SUM((case when AteNombre='DULANTO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_DULANTO,
+SUM((case when AteNombre='CCF PAN NUESTRO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_PAN_NUESTRO,
+SUM((case when AteNombre='SÁNCHEZ ARTEAGA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_SaNCHEZ_ARTEAGA,
+SUM((case when AteNombre='CCF VIRGEN DEL CARMEN' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_VIRGEN_DEL_CARMEN,
+SUM((case when AteNombre='CCF VIRGEN DE FATIMA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_VIRGEN_DE_FATIMA,
+SUM((case when AteNombre='SANTA BERNARDITA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_SANTA_BERNARDITA,
+SUM((case when AteNombre='TAHUANTINSUYO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_TAHUANTINSUYO,
+SUM((case when AteNombre='CCF AMATISTAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_AMATISTAS,
+SUM((case when AteNombre='CCF TAHUANTINSUYO IV ZONA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_TAHUANTINSUYO_IV_ZONA,
+SUM((case when AteNombre='CCF SAGRADO CORAZÓN' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_SAGRADO_CORAZON,
+SUM((case when AteNombre='CCF JESÚS NAZARENO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_JESUS_NAZARENO,
+SUM((case when AteNombre='TURQUEZAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_TURQUEZAS,
+SUM((case when AteNombre='CCF SAN JUAN BAUTISTA DE QUILICI' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_SAN_JUAN_BAUTISTA_QUILI,
+SUM((case when AteNombre='CCF SAN NICOLAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_SAN_NICOLAS,
+SUM((case when AteNombre='CCF SEMBRANDO ESPERANZA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_SEMBRANDO_ESPERANZA,
+SUM((case when AteNombre='CCF NIÑO JESÚS DE PRAGA - TURQUEZAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_NINO_JESUS_PRAGA_TURQ,
+SUM((case when AteNombre='CCF LOS ANGELITOS DE HUASCARÁN' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_LOS_ANGELITOS_DE_HUASCARAN,
+SUM((case when AteNombre='CCF MI CASITA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_MI_CASITA,
+SUM((case when AteNombre='CCF PROFAM' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_PROFAM,
+SUM((case when AteNombre='SAN JUDAS TADEO' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_SAN_JUDAS_TADEO,
+SUM((case when AteNombre='CCF RIO JORDÁN' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_RIO_JORDAN,
+SUM((case when AteNombre='VILLA HERMOSA' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CEDIF_VILLA_HERMOSA,
+SUM((case when AteNombre='CCF LAS PALMAS' then (ROUND(TOTAL_ALMUERZO/$P{division})) ELSE 0 end)) as CCF_LAS_PALMAS
+from tfalimentos_almuerzo_reporte   where  AliMesCal =$P{mes} and AliPeriodo=$P{periodo} and AliYearCal = $P{ano} group by Alilinea order by Alilinea]]>
+	</queryString>
+	<field name="CEDIF_ANO_NUEVO" class="java.lang.String"/>
+	<field name="ALILINEA" class="java.lang.String">
+		<fieldDescription><![CDATA[ALILINEA]]></fieldDescription>
+	</field>
+	<field name="CCF_VILLA_ESPERANZA" class="java.lang.String"/>
+	<field name="CEDIF_COLLIQUE" class="java.lang.String"/>
+	<field name="CCF_LOS_ANGELES" class="java.lang.String"/>
+	<field name="CEDIF_DALIAS" class="java.lang.String"/>
+	<field name="CCF_NINO_JESUS_PRAGA_DAL" class="java.lang.String"/>
+	<field name="CCF_LAS_DELICIAS" class="java.lang.String"/>
+	<field name="CEDIF_ROSA_DE_LIMA" class="java.lang.String"/>
+	<field name="CCF_FAISANES" class="java.lang.String"/>
+	<field name="CCF_VILLA_MARIA_DEL_TRIUNFO" class="java.lang.String"/>
+	<field name="CCF_NUEVO_PROGRESO" class="java.lang.String"/>
+	<field name="CCF_JOSE_GALVEZ" class="java.lang.String"/>
+	<field name="CEDIF_PAMPLONA_ALTA" class="java.lang.String"/>
+	<field name="CCF_MARIA_DE_LOS_ANGELES" class="java.lang.String"/>
+	<field name="CCF_CORAZON_DE_MARIA" class="java.lang.String"/>
+	<field name="CCF_LAS_AMERICAS" class="java.lang.String"/>
+	<field name="CCF_ALBORADA" class="java.lang.String"/>
+	<field name="CCF_NINO_JESUS" class="java.lang.String"/>
+	<field name="CCF_MINAS_2000" class="java.lang.String"/>
+	<field name="CCF_SEÑOR_DE_LOS_MILAGROS" class="java.lang.String"/>
+	<field name="CEDIF_PESTALOZZI" class="java.lang.String"/>
+	<field name="CCF_EL_PLANETA" class="java.lang.String"/>
+	<field name="CCF_AEROPUERTO_PESTALOZZI" class="java.lang.String"/>
+	<field name="CCF_BOCANEGRA" class="java.lang.String"/>
+	<field name="CEDIF_DULANTO" class="java.lang.String"/>
+	<field name="CCF_PAN_NUESTRO" class="java.lang.String"/>
+	<field name="CEDIF_SaNCHEZ_ARTEAGA" class="java.lang.String"/>
+	<field name="CCF_VIRGEN_DEL_CARMEN" class="java.lang.String"/>
+	<field name="CCF_VIRGEN_DE_FATIMA" class="java.lang.String"/>
+	<field name="CEDIF_SANTA_BERNARDITA" class="java.lang.String"/>
+	<field name="CEDIF_TAHUANTINSUYO" class="java.lang.String"/>
+	<field name="CCF_AMATISTAS" class="java.lang.String"/>
+	<field name="CCF_TAHUANTINSUYO_IV_ZONA" class="java.lang.String"/>
+	<field name="CCF_SAGRADO_CORAZON" class="java.lang.String"/>
+	<field name="CCF_JESUS_NAZARENO" class="java.lang.String"/>
+	<field name="CEDIF_TURQUEZAS" class="java.lang.String"/>
+	<field name="CCF_SAN_JUAN_BAUTISTA_QUILI" class="java.lang.String"/>
+	<field name="CCF_SAN_NICOLAS" class="java.lang.String"/>
+	<field name="CCF_SEMBRANDO_ESPERANZA" class="java.lang.String"/>
+	<field name="CCF_NINO_JESUS_PRAGA_TURQ" class="java.lang.String"/>
+	<field name="CCF_LOS_ANGELITOS_DE_HUASCARAN" class="java.lang.String"/>
+	<field name="CCF_MI_CASITA" class="java.lang.String"/>
+	<field name="CCF_PROFAM" class="java.lang.String"/>
+	<field name="CEDIF_SAN_JUDAS_TADEO" class="java.lang.String"/>
+	<field name="CCF_RIO_JORDAN" class="java.lang.String"/>
+	<field name="CEDIF_VILLA_HERMOSA" class="java.lang.String"/>
+	<field name="CCF_LAS_PALMAS" class="java.lang.String"/>
+	<field name="LINEA" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<textField>
+				<reportElement x="1580" y="0" width="460" height="32" uuid="c4dbcaf7-1a5a-434b-9fdb-0a7ee728d43a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1580" y="32" width="460" height="32" uuid="e7759505-6f94-4bd4-85d3-67aea95e4584"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{subtitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1580" y="64" width="460" height="35" uuid="981f7eac-eb3d-4d36-8000-6e6aed160e37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{subbtitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="152" height="48" forecolor="#FFFFFF" backcolor="#053773" uuid="fea6333b-6e16-4b26-baa6-b1a03c10d88f"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Grupo Etareo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="152" y="0" width="140" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="836aa10a-5ba6-415c-b69f-3291adc4c281"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[AÑO NUEVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="152" y="20" width="68" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="9f3acef6-1ac6-49cd-9d58-5d7ebaeedeca"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF AÑO NUEVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="003d4ea2-5f7e-40ee-8586-14c074c7e0f4"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF VILLA ESPERANZA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="292" y="0" width="140" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="2def7da6-484f-4621-8b9a-c1d647e882b9"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[COLLIQUE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="292" y="20" width="68" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="f592b6c3-ee13-49fd-a20d-f6855b60b50d"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF COLLIQUE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="360" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="02788890-799a-4beb-8a8a-5d4126ac0120"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF LOS ANGELES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="432" y="0" width="230" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="535bbcf8-a30c-420c-bde6-4b847b58d5a2"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DALIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="432" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="5111de1c-af04-4990-b120-d46311e298e3"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF DALIAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="20" width="97" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="5dce8054-13a6-4b58-98e6-815b4928ac64"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF NIÑO JESÚS DE PRAGA - DALIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="601" y="20" width="61" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="57476f20-8334-49f7-b0e6-a6aef0531f7e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF LAS DELICIAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="662" y="0" width="360" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="7d79e148-f7c6-48d8-af90-479bc4833ae1"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ROSA DE LIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="662" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="b3ad5465-356c-4cfa-9014-149f3c84c215"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF ROSA DE LIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="734" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="c7da681f-b961-42d4-8761-11dbbe031f2a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF FAISANES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="806" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="c7fa2c85-b9e2-4dec-b454-a67eb6258a97"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF VILLA MARÍA DEL TRIUNFO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="878" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="fa02ba64-c1cb-48b7-8843-c2248666872a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF NUEVO PROGRESO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="950" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="10bd988d-4404-4376-a2b4-4ec46d90af85"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF JOSÉ GÁLVEZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1022" y="0" width="576" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="7bf1c7c2-a2b2-4646-a3b5-2b99f9935519"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[PAMPLONA ALTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1022" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="1ebaec05-377c-4384-ae43-4e2f735b03d2"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF PAMPLONA ALTA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1094" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="cc3a03c7-d9c4-4254-9378-3e16c0670871"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF MARÍA DE LOS ANGELES
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1166" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="ba27c32f-664c-4680-bd4d-5782f6b1a2b7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF CORAZÓN DE MARÍA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1238" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="9148f167-e448-4d76-939c-ef909692d35d"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF LAS AMÉRICAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1310" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="ba0bf8cb-d7f9-4592-ac69-3e6a3248c575"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF ALBORADA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1382" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="1f91bdb5-9d04-44b6-ab53-01ef93a6f08a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF NIÑO JESÚS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1454" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="5aa18cc9-8731-4f6c-807a-02c0f4826021"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF MINAS 2000
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1526" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="9957cf47-d55d-47e0-af60-9f9168d2c29a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF SEÑOR DE LOS MILAGROS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1598" y="0" width="309" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="ae8cad96-19b9-4598-87a1-fd0f73d419a3"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Pestalozzi			
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1670" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="82a4a21e-ba63-47cb-991e-06abce32b639"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF EL PLANETA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1598" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="13f750f0-1744-4406-8153-767e71355ad1"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF PESTALOZZI
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1742" y="20" width="93" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="b31602cb-1f05-478d-9c28-594880ae3012"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF AEROPUERTO PESTALOZZI
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1835" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="b7637228-2fc3-414c-bcf1-01569ba5525c"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF BOCANEGRA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1907" y="0" width="144" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="739445a9-5234-4966-a79a-27f2f56ea9f5"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Dulanto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1907" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="d4282615-c3df-4316-a23d-baa2bc5200b7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF DULANTO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1979" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="475fa0f6-08da-455b-b8be-e3a090f64574"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF PAN NUESTRO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2051" y="0" width="209" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="35fa4ef0-6137-4595-be9b-78a2528efccf"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sánchez Arteaga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2051" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="7fca7d1c-5cb6-43d8-86ec-50db903af803"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF SÁNCHEZ ARTEAGA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2123" y="20" width="72" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="b0a759f6-85fe-4cc0-b998-b2a8ad475873"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF VIRGEN DEL CARMEN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2195" y="20" width="65" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="1643934b-6688-4939-8624-c1960de4381a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF VIRGEN DE FATIMA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2260" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="0ce07d10-2257-4fd9-a211-18e3473846c0"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sta. Bernardita
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2260" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="c8501793-3355-4d40-8ab7-00d36719e8fa"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF VIRGEN DE FATIMA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2340" y="0" width="400" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="945170d9-3549-4dfc-8e72-d611d662c151"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tahuantinsuyo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2340" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="d55016a9-ea72-402d-b619-e3340f243efe"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF TAHUANTINSUYO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2420" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="6a54d84f-40af-430d-943c-e75b72c72960"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF AMATISTAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2500" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="6948ece0-ca93-45a1-9c9a-b941994ccf0e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF TAHUANTINSUYO IV ZONA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2580" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="d5e36bce-d547-45c4-84a2-01ff70c5fd36"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF SAGRADO CORAZÓN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2660" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="0a891f69-fb4c-40d8-9d15-982dc579b994"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF JESÚS NAZARENO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2740" y="0" width="690" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="89bcadf3-37dd-42fc-82d5-d9c4cbb21685"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Turquezas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2740" y="20" width="80" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="23aa89d3-b902-4850-af26-a9554645ad1a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF TURQUEZAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2820" y="20" width="110" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="ebbc1977-9eaf-4838-98d7-36b65e916e19"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF SAN JUAN BAUTISTA DE QUILICI
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2930" y="20" width="90" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="d04cb6aa-afa5-400e-9b7b-a75d3dbf9f46"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF SAN NICOLAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3020" y="20" width="90" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="604ba223-16c6-4d11-9280-ac2aa52619d0"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF SEMBRANDO ESPERANZA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3110" y="20" width="90" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="0e50305f-6b55-40f1-8ee3-d6db8be171af"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF NIÑO JESÚS DE PRAGA - TURQUEZAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3200" y="20" width="90" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="7c9bb474-5e5f-4064-98bf-1df20462f56d"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF LOS ANGELITOS DE HUASCARÁN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3290" y="20" width="70" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="df07cab0-4370-425c-af12-2c92709690a7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF MI CASITA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3360" y="20" width="70" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="c2ae9304-5565-4a72-bcae-980853281dbd"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF PROFAM
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3430" y="0" width="140" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="3462420d-683c-4e97-b302-6c1ae0b570b8"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[San Judas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3430" y="20" width="70" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="ee842d43-e7b3-418c-952b-de66f3c256d7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF SAN JUDAS TADEO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3500" y="20" width="70" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="187475b9-d06a-4e69-ac59-417b2d925ac0"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF RIO JORDÁN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3570" y="0" width="140" height="20" forecolor="#FFFFFF" backcolor="#053773" uuid="4a727345-c9fd-4fd5-97f6-af5857c2c3a0"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Villa Hermosa	
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3570" y="20" width="70" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="be033656-9ef8-4b4f-8573-6d49d0628c0e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEDIF VILLA HERMOSA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3640" y="20" width="70" height="28" forecolor="#FFFFFF" backcolor="#053773" uuid="1478093f-9adf-47ec-aa2d-3f801df06a16"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CCF LAS PALMAS
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="152" y="0" width="68" height="20" uuid="43562ec1-712f-4212-b174-88e12e63d6fb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ea309e7-9dc4-4b8b-a48c-7f5eecf00daf"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_ANO_NUEVO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="72" height="20" uuid="33aab410-c0ab-4b93-a5e9-37c70d3f61ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c46ac697-0673-4a18-862b-b1e64f75702e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_VILLA_ESPERANZA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="0" width="68" height="20" uuid="e9f6e8ab-e139-4075-8521-07a47f00974e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a490a4a3-e520-4e8d-8526-2d46bbee97dc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_COLLIQUE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="72" height="20" uuid="9b15a991-5742-4307-8e65-e721012e92dc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d13537c-023a-463f-a858-e067d0eb9946"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_LOS_ANGELES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="0" width="72" height="20" uuid="1e55b6ae-4e37-49dc-9a9c-99f217d177d7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab8d92e4-a99f-40eb-b489-e6ad4e7e8a7e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_DALIAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="504" y="0" width="96" height="20" uuid="a2a4bbcd-26c9-4e8b-b981-403a080e4380">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8b564e80-1052-40e4-ae36-0dff7ff2cdab"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_NINO_JESUS_PRAGA_DAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="62" height="20" uuid="4c882522-25c6-402e-b6a0-149bc58f1f57">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a696a22-e20f-4b76-aa79-bb905e0e63a1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_LAS_DELICIAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="662" y="0" width="72" height="20" uuid="c0a33e87-785f-4609-8a21-59a0dd58223a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c800b579-fc41-4885-a8e5-9778c88cf617"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_ROSA_DE_LIMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="734" y="0" width="72" height="20" uuid="1f91c346-b0a2-4eba-b444-f4b4eac5e1cd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fc3d66f-6b2d-4208-8938-d1420d8295d8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_FAISANES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="806" y="0" width="72" height="20" uuid="17d9d139-de6f-4c49-b854-e2c0fa08cbc2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7271eb7-9b59-4588-8e2b-80ff51e6fc7f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_VILLA_MARIA_DEL_TRIUNFO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="878" y="0" width="72" height="20" uuid="5fd79801-3ddc-41fa-803e-5c39697800b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae30ef52-bef0-4a62-8531-0f44f8709ddc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_NUEVO_PROGRESO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="950" y="0" width="72" height="20" uuid="0531a2ec-6091-4e09-8099-038ead56c9d8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="63758f14-b4bc-40ff-8883-dd557f894931"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_JOSE_GALVEZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1022" y="0" width="72" height="20" uuid="59d0cbb0-097e-417f-8c73-4ad32339b08c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee9f2f57-7a17-4b5b-aa5c-92b1e440a2fa"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_PAMPLONA_ALTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1094" y="0" width="72" height="20" uuid="814f2b19-0add-4bd8-988b-dbbc82b515ca">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eaf3e656-5c7d-4700-aacb-397216ea1dc8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_MARIA_DE_LOS_ANGELES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1166" y="0" width="72" height="20" uuid="c823a6f3-4a7d-41bc-a4a9-cdfd950ec6ed">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d28f519-a7f7-4783-a2c7-ea5a4bf050a2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_CORAZON_DE_MARIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1238" y="0" width="72" height="20" uuid="63323eff-9343-4b0e-83e4-cd02d49444b7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8c625154-7ee0-4b5c-9f55-338aececff8c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_LAS_AMERICAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1310" y="0" width="72" height="20" uuid="a8798e47-14b2-4058-93e3-f0e90be678f3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2194083e-48c8-4d61-9301-bf5f7542cfc9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_ALBORADA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1382" y="0" width="72" height="20" uuid="de7a44cd-3191-44fb-a7da-39b77d03a28e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5cc68481-f3eb-41c4-9305-486f297017b5"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_NINO_JESUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1454" y="0" width="72" height="20" uuid="93915c7e-f14e-4af8-a30f-1ab758a5c9c4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="751e91d9-346c-4d56-8433-446c8d243aae"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_MINAS_2000}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1526" y="0" width="72" height="20" uuid="66e330af-8f82-4878-af18-774ad8d8a6c6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfc7e9c6-4b13-4c44-8b5a-1cb3cdc56be0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_SEÑOR_DE_LOS_MILAGROS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1598" y="0" width="72" height="20" uuid="78101a18-40ba-4dd9-bb08-f64825c6b68e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1a5fb55-0f16-44eb-9797-34fcdcb4bdb0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_PESTALOZZI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1670" y="0" width="72" height="20" uuid="806ae8b3-4af6-4fcc-b256-dc554c964f7d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aa354707-e9c2-48ce-b0e1-b1ade86d8825"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_EL_PLANETA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1742" y="0" width="92" height="20" uuid="5119dc13-de7e-4173-b735-42802d0b3e25">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70c4d808-35bd-4cf0-8bae-dfbab7f2b044"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_AEROPUERTO_PESTALOZZI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1834" y="0" width="72" height="20" uuid="6b56f808-e02e-4b61-ab11-b537f647b983">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5177ce06-395e-4bfb-85f6-7d656e65c166"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_BOCANEGRA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1906" y="0" width="72" height="20" uuid="42418ddb-c295-4943-8b9c-7bb7fefb4f81">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52bffd10-7911-4569-a281-bb8abb557577"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_DULANTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1978" y="0" width="72" height="20" uuid="231743f6-4542-4b7c-aadc-3bfa3cc61207">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db66a3fb-4631-4743-a3d1-1c818130d5ae"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_PAN_NUESTRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2050" y="0" width="72" height="20" uuid="c843ccf0-d58f-43bb-9683-08404853debe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="96c3336d-deef-4d26-95da-743dbb9d81a1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_SaNCHEZ_ARTEAGA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2122" y="0" width="72" height="20" uuid="3152e20f-77b6-4ceb-aab2-8e51735a6709">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1383ab3-72fb-40a6-9ff0-2fc3f22315ee"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_VIRGEN_DEL_CARMEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2194" y="0" width="66" height="20" uuid="bba45d8e-f00a-40ce-8e54-150545fd3576">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4518e64d-201b-40cb-9417-0d185b9fc5f1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_VIRGEN_DE_FATIMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2260" y="0" width="80" height="20" uuid="752179c3-ca05-4484-a83f-fe647b4e965d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c9a567be-5ed6-4ebf-a1af-18c220d18756"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_SANTA_BERNARDITA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2340" y="0" width="80" height="20" uuid="f97e0769-7afe-4714-a6b2-f58fcbfe1342">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70047cce-9ed7-4be1-8355-bb6ec456b4f3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_TAHUANTINSUYO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2420" y="0" width="80" height="20" uuid="3c3c7549-ec4a-4598-b15b-5c1649c4e12c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e0bc22a-8ee4-4ea6-b798-46f455b0629b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_AMATISTAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2500" y="0" width="80" height="20" uuid="c4212a32-b502-424d-9962-9a7632d566c1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="13b26bf7-ca8d-4041-b50c-cbbe56999fcb"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_TAHUANTINSUYO_IV_ZONA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2580" y="0" width="80" height="20" uuid="b15cfc50-fb75-4a0d-85ae-c5939cdf76fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e4c3d3b-4f98-4a5a-b6c5-94f2329b1c1b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_SAGRADO_CORAZON}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2660" y="0" width="80" height="20" uuid="17a5fad6-a325-439a-a7fe-a7adafff51c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2277654d-1ec5-4ac7-ba28-354f512eb245"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_JESUS_NAZARENO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2740" y="0" width="80" height="20" uuid="dcfa6768-a6da-41d7-bc69-767ed62e8068">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bf0b4c6f-f946-4cef-9b18-a7a3d928502a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_TURQUEZAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2820" y="0" width="110" height="20" uuid="0f1cd16e-9459-4d2d-a35d-377926375013">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="10a08877-69a0-4acc-8f17-d844a3f62b18"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_SAN_JUAN_BAUTISTA_QUILI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2930" y="0" width="90" height="20" uuid="321b5835-8130-4e85-a65f-a4d0d9a19713">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e43bb438-553f-42f9-8bac-359c4376dd08"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_SAN_NICOLAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3020" y="0" width="90" height="20" uuid="f0423fa9-445c-4a98-867e-751d1c8c30c3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="60215992-47cc-4a27-a10d-2d39d67259d7"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_SEMBRANDO_ESPERANZA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3110" y="0" width="90" height="20" uuid="55e6b034-a53b-4e9c-8da3-0c59fc3c3def">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="596c3938-8c6d-423a-ba75-7a33cbbf825a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_NINO_JESUS_PRAGA_TURQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3200" y="0" width="90" height="20" uuid="dd0abece-6c19-43b1-979a-4ec13bd1e5fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1ea3c59-a6ce-417f-919a-d4890cf96499"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_LOS_ANGELITOS_DE_HUASCARAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3290" y="0" width="70" height="20" uuid="bdb83cea-6df1-4223-a51d-028844c649d3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1812624-b7b4-431e-b20a-39ba7666bdbf"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_MI_CASITA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3360" y="0" width="70" height="20" uuid="2747806d-16f8-4076-b358-8d6f22f8f92e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e393c2a6-1276-49a9-a7cd-2a08f81d130c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_PROFAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3430" y="0" width="70" height="20" uuid="feda7559-3f39-4ac1-9db1-bb2a3aeb57f6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="481c449d-45a3-423b-9a95-6176772f1948"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_SAN_JUDAS_TADEO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3500" y="0" width="70" height="20" uuid="75f62c63-4181-4cd2-8ef9-4e7e9efbfd1e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29b61262-2abf-45f2-a044-cde5294bfcdc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_RIO_JORDAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3570" y="0" width="70" height="20" uuid="d9672767-5589-4d8c-b53f-d27792ad59ae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c367c280-1d6e-46f7-a135-1328f461e5b2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CEDIF_VILLA_HERMOSA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3640" y="0" width="70" height="20" uuid="a6d67080-5e6d-43ac-b64c-eef910cfa020">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b97bea30-bebb-4b8c-8f4e-13da87d32d3b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CCF_LAS_PALMAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="152" height="20" uuid="93e0a9d7-a131-4bcc-a7cf-e24ce0f4f240">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="401c1af1-c505-45b0-977a-0c15ae4aab54"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{LINEA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

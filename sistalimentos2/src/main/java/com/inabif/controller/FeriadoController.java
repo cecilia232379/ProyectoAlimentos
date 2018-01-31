@@ -92,10 +92,10 @@ public class FeriadoController {
 	@GetMapping("/feriadoform2")
 	private String FeriadoForm(@RequestParam(name="id",required=false) int id,Model model) {
 		FeriadoModel feriado = new FeriadoModel();
+		
 		if(id!=0) {
 			feriado = feriadoService.findFeriadosByIdModel(id);
 		}
-
 		model.addAttribute("feriadoModel",feriado);
 		return "feriadomodal :: modalf";
 	}

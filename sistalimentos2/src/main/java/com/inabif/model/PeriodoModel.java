@@ -15,6 +15,14 @@ public class PeriodoModel {
 	public int getIdperiodo() {
 		return idperiodo;
 	}
+	
+	@Override
+	public String toString() {
+		return "PeriodoModel [idperiodo=" + idperiodo + ", peryeart=" + peryeart + ", persemana=" + persemana
+				+ ", perfecinicio=" + perfecinicio + ", perfecfin=" + perfecfin + ", pereliminado=" + pereliminado
+				+ "]";
+	}
+
 	public void setIdperiodo(int idperiodo) {
 		this.idperiodo = idperiodo;
 	}

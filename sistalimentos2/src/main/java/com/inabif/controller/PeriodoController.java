@@ -2,6 +2,8 @@ package com.inabif.controller;
 
 import org.apache.commons.logging.LogFactory;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.inabif.component.PageWrapper;
 import com.inabif.constant.ViewConstant;
 import com.inabif.entity.Periodo;
-import com.inabif.model.FeriadoModel;
+
 import com.inabif.model.PeriodoModel;
 //import com.inabif.constant.ViewConstant;
 import com.inabif.service.PeriodoService;
@@ -89,6 +95,14 @@ public class PeriodoController {
 	    return "periodotable :: resultsList";
 	}
 	
+	@GetMapping("/periodoform2")
+	private String PeriodoForm(Model model) {
+		PeriodoModel periodo = new PeriodoModel();
+		//periodo.setPereliminado(0);
+		model.addAttribute("periodoModel",periodo);
+		return "periodoModal :: modalContents";
+	}
+	
 	@GetMapping("/periodoform")
 	private String redirectPeriodoForm(@RequestParam(name="id",required=false) int id,Model model) {
 		PeriodoModel periodo = new PeriodoModel();
@@ -101,8 +115,19 @@ public class PeriodoController {
 	}
 	
 	@PostMapping("/addperiodo")
-	public String addContact(@ModelAttribute(name="periodoModel") PeriodoModel periodoModel,Model model) {
-		LOG.info("METHOD: addferiado() --PARMS:" +periodoModel.toString());
+	public String addperiodo(@ModelAttribute(name="periodoModel") PeriodoModel periodoModel,Model model) {
+
+		LOG.info("METHOD: addperiodo() --PARMS:" +periodoModel.toString());
+		//Calendar cal = Calendar.getInstance();
+		
+	    //cal.setTime(periodoModel.getPerfecinicio());  
+	    //periodoModel.setPeryeart(cal.get(Calendar.YEAR));
+	   // System.out.println("año"+cal.get(Calendar.YEAR));
+	   // System.out.println("week of year"+cal.get(Calendar.WEEK_OF_YEAR));
+	   periodoModel.setPereliminado(0);
+	    //periodoModel.setPersemana(cal.get(Calendar.WEEK_OF_YEAR));
+	    
+	    
 		if(null != periodoService.addPeriodo(periodoModel)) {
 			model.addAttribute("result",1);
 		}else{

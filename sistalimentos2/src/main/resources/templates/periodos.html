@@ -43,6 +43,8 @@
         <script language="JavaScript" type="text/javascript" th:src="@{/js/seguridad/main.js}"></script>
 
         <!--DatePicker-->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
  		<style>
@@ -52,8 +54,23 @@
  		</style>
 
 <script>
+
 $(document).ready(function() {
 	getPeriodosByYear(2017);
+	$('body').on('focus',".datepicker", function(){
+	    $(this).datepicker({
+	    	dateFormat: "dd-mm-yy",
+	
+	        dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+	        dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+	        monthNames: 
+	            ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+	            "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+	        monthNamesShort: 
+	            ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+	            "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+	    });
+	});
 	$("#dropdown_ano").change(function(){
 		if($("#dropdown_mes").val()!=""){
 			getPeriodosByYearAnMonth($("#dropdown_ano").val(),$("#dropdown_mes").val());
@@ -70,7 +87,19 @@ $(document).ready(function() {
     	}
     	
     });
+    
 });
+
+function openCreateModal(){
+	$.ajax({
+		url: "/sistalimentos2/periodo/periodoform2",
+		success: function (data){
+			$("#personaCreateModal").html(data);
+			$("#personaCreateModal").modal('show');
+		}
+	});
+	
+}
 	function getPeriodosByYearAnMonth(year,month){
 		var url = '/sistalimentos2/periodo/listar/'+year+"/"+month;
 		//loading gif
@@ -125,13 +154,13 @@ function getPeriodosByYear(year){
 
 
 
-<a href="#" th:href="@{/periodo/periodoform?id=0}">
-     <button type="button" class="btn btn-success">Nuevo</button>
- </a>    
+<!--  <a href="#" th:href="@{/periodo/periodoform?id=0}">-->
+     <button id="nuevoPeriodo" th:onclick="'javascript:openCreateModal()'" type="button" class="btn btn-success">Nuevo</button>
+ <!--  </a>    -->
      <div id="grilla_periodo">           
 
          </div>      
-                
+              <div id="personaCreateModal" class="modal" role="dialog" ></div>  
                 
                 <a id="btn-scrollup" class="btn btn-circle btn-large" href="#" ><i class="icon-chevron-up"></i></a>
             </div>

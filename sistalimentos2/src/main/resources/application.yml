@@ -37,7 +37,7 @@ security:
       prefer-token-info: true
       service-id: resource
 server:
-  port: 8077
+  port: 8075
   contextPath: /sistalimentos2
 
 
